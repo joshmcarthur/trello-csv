@@ -31,7 +31,7 @@ class TrelloCSVExport
         $.each list.cards, (index, card) =>
           @csv_string += "#{card.name}#{@line_ending}"
       # #TODO replace with jquery.savefile
-      $('<form></form>', { action: "http://savefile.joshmcarthur.com/#{@board.name}.csv", method: 'post'}).append(
+      $('<form></form>', { action: "http://savefile.herokuapp.com/#{@board.name}.csv", method: 'post'}).append(
         $('<input></input>', { type: 'hidden', name: 'content', value: @csv_string })
       ).submit()
 
