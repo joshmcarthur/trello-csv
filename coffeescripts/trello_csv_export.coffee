@@ -30,7 +30,7 @@ class TrelloCSVExport
         @csv_string += (@csv_sep + @csv_sep + @line_ending) #Newline
         @csv_string += "#{list.name}#{@csv_sep}#{@line_ending}"
         $.each list.cards, (index, card) =>
-          @csv_string += "\"#{card.name}#{@csv_sep.replace('"', '""')}#{card.desc.replace('"', '""')}#{@line_ending}\""
+          @csv_string += "\"#{card.name.replace('"', '""')}#{@csv_sep}#{card.desc.replace('"', '""')}#{@line_ending}\""
       # #TODO replace with jquery.savefile
       $('<form></form>', { action: "http://savefile.herokuapp.com/#{@board.name}.csv", method: 'post'}).append(
         $('<input></input>', { type: 'hidden', name: 'content', value: @csv_string })
