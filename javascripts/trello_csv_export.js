@@ -45,9 +45,9 @@
       }, function(lists) {
         $.each(lists, function(index, list) {
           _this.csv_string += _this.csv_sep + _this.csv_sep + _this.line_ending;
-          _this.csv_string += "" + list.name + _this.csv_sep + _this.line_ending;
+          _this.csv_string += "\"" + list.name + "\"" + _this.csv_sep + "\"\"" + _this.line_ending;
           return $.each(list.cards, function(index, card) {
-            return _this.csv_string += "\"" + (card.name.replace('"', '""')) + _this.csv_sep + (card.desc.replace('"', '""')) + _this.line_ending + "\"";
+            return _this.csv_string += "\"" + (card.name.replace(/"/g, '""')) + "\"" + _this.csv_sep + "\"" + (card.desc.replace(/"/g, '""')) + "\"" + _this.line_ending;
           });
         });
         return $('<form></form>', {
